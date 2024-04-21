@@ -1,5 +1,5 @@
 import iziToast from "izitoast";
-import "izitoast/dist/css/iziToast.min.css";
+import "./izitoast/dist/css/iziToast.min.css";
 import { openModalWindow } from "./modules/modalWindow";
 import { showDropDown } from "./modules/dropdown";
 
@@ -34,6 +34,7 @@ carBrand.addEventListener("change", async () => {
   }
 });
 
+console.log("Modal window is opening...");
 openModalWindow();
 
 carCalculatiionForm.addEventListener("submit", handleShowPrice);

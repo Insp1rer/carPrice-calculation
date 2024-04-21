@@ -6,6 +6,7 @@ export function openModalWindow() {
   const checkList = document.querySelector(".push-modal-info");
 
   modalButton.addEventListener("click", () => {
+    console.log("Modal window has opened");
     modal.style.display = "block";
     checkList.innerHTML = ` <div class="parametrs-check">
               <ul class="price-check">
