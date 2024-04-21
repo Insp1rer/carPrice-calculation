@@ -17,7 +17,7 @@ body {
   color: var(--text-color);
   display: flex;
   flex-wrap: wrap;
-  max-width: 632px;
+  max-width: 640px;
   gap: 20px 42px;
   list-style: none;
   padding: 0;
@@ -30,19 +30,20 @@ body {
 }
 
 .input-field-text {
-  width: 268px;
-  height: 33px;
+  width: 286px;
+  height: 34px;
   padding-left: 10px;
   box-sizing: border-box;
   border-radius: 14px;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 16px;
+  border: 1px solid white;
 }
 
 .option-select {
-  width: 268px;
-  height: 33px;
+  width: 286px;
+  height: 34px;
   padding-left: 10px;
   padding-right: 10px;
   box-sizing: border-box;
@@ -50,6 +51,7 @@ body {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 16px;
+  border: 1px solid white;
 }
 
 .undo-parametr {
@@ -192,4 +194,101 @@ body {
 .inc {
   display: flex;
   justify-content: center;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(19, 19, 19, 0.8);
+  animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.modal-content {
+  background-color: rgb(71, 71, 71);
+  margin: auto;
+  margin-top: 11%;
+  color: white;
+  padding: 20px;
+  border: 1px solid rgb(75, 74, 74);
+  border-radius: 10px;
+  width: 70%;
+  transform: scale(0);
+  animation: zoomIn 0.8s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.closeBtn {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.price-check {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 0;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.parametrs-check {
+  border-bottom: 1px solid white;
+  display: flex;
+  gap: 60px;
+}
+
+.overall-check-price {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+@keyframes unfoldIn {
+  0% {
+    transform: scaleY(0.005) scaleX(0);
+  }
+  50% {
+    transform: scaleY(0.005) scaleX(1);
+  }
+  100% {
+    transform: scaleY(1) scaleX(1);
+  }
+}
+
+@keyframes unfoldOut {
+  0% {
+    transform: scaleY(1) scaleX(1);
+  }
+  50% {
+    transform: scaleY(0.005) scaleX(1);
+  }
+  100% {
+    transform: scaleY(0.005) scaleX(0);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
 }

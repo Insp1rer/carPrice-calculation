@@ -53,7 +53,7 @@
               </select>
             </li>
             <li class="undo-parametr">
-              <label for="mileage">Пробіг</label>
+              <label for="mileage">Пробіг, тис. км</label>
               <input
                 class="input-field-text"
                 type="text"
@@ -61,36 +61,6 @@
                 id="mileage"
                 required
               />
-            </li>
-            <li class="undo-parametr">
-              <label for="capacity">Об’єм двигуна</label>
-              <input
-                class="input-field-text"
-                type="text"
-                name="Capacity"
-                id="capacity"
-                required
-              />
-            </li>
-            <li class="options-list undo-parametr">
-              <label for="cab">Тип кузова</label>
-
-              <select name="cabs" id="cab" class="option-select">
-                <option value="" selected disabled hidden></option>
-                <option value="Sedan">Седан</option>
-                <option value="Compartment">Купе</option>
-                <option value="MPV">Універсал</option>
-                <option value="SUV">Позашляховик</option>
-                <option value="Minivan">Мінівен</option>
-                <option value="Liftback">Ліфтбек</option>
-                <option value="Microvan">Мікровен</option>
-                <option value="Pickup">Пікап</option>
-                <option value="Roadster">Родстер</option>
-                <option value="Hatchback">Хетчбек</option>
-                <option value="Cabriolet">Кабріолет</option>
-                <option value="Limousine">Лімузин</option>
-                <option value="Fastback">Фастбек</option>
-              </select>
             </li>
             <li class="options-list undo-parametr">
               <label for="fuel">Вид палива</label>
@@ -297,18 +267,14 @@
               </div>
             </li>
             <li class="undo-parametr">
-              <button class="price-calculation-btn" id="myBtn">
+              <button class="price-calculation-btn">
                 Розрахувати вартість
               </button>
-              <div id="myModal" class="modal">
-                <div class="modal-content">
-                  <span class="close">&times;</span>
-                </div>
-              </div>
             </li>
           </ul>
         </form>
       </div>
+
       <div class="nereal-img">
         <img
           src="./images/motivation.png"
@@ -322,6 +288,13 @@
     </main>
     <footer>
       <div class="inc">© 2024, Ligominki, Inc. All rights reserved</div>
+      <button class="modal-btn" id="myBtn">Розрахувати вартість</button>
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="closeBtn">&times;</span>
+          <div class="push-modal-info"></div>
+        </div>
+      </div>
     </footer>
     <script src="/main.js" type="module"></script>
   </body>
