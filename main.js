@@ -1,5 +1,5 @@
 import iziToast from "izitoast";
-import "./izitoast/dist/css/iziToast.min.css";
+import "izitoast/dist/css/iziToast.min.css";
 import { openModalWindow } from "./modules/modalWindow";
 import { showDropDown } from "./modules/dropdown";
 
@@ -21,15 +21,19 @@ carBrand.addEventListener("change", async () => {
         method: "GET",
       }
     );
+    console.log(response);
     const data = await response.json();
-    console.log(data.gay);
-  } catch (error) {
-    if (carBrand.value.length > 0) {
+    console.log(data);
+    if (data.code !== 200) {
       iziToast.error({
         position: "topRight",
         title: "Помилка",
         message: `Невірна марка`,
       });
+    }
+  } catch (error) {
+    if (carBrand.value.length > 0) {
+      console.log(error);
     }
   }
 });
