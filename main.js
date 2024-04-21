@@ -6,10 +6,16 @@ const selectedCab = document.getElementById("cab");
 const selectedFuel = document.getElementById("fuel");
 const selectedGearbox = document.getElementById("gearbox");
 const radioButton = document.querySelector(".button-label span");
-
-//module.exports = { json: }
-
 const carBrand = document.getElementById("brand");
+const manufactureYearDropDown = document.getElementById("manufacture-year");
+
+const currentYear = new Date().getFullYear();
+const html = [];
+for (let i = 0; i < 50; i++) {
+  const year = currentYear - i;
+  html.push(`<option name="${year}">${year}</option>`);
+}
+manufactureYearDropDown.insertAdjacentHTML("beforeend", html.join(""));
 
 carBrand.addEventListener("change", async () => {
   try {
