@@ -2,72 +2,101 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 import { openModalWindow } from "./modules/modalWindow";
 import { showDropDown } from "./modules/dropdown";
+import { handleShowPrice } from "./modules/formSubmitCheck";
 
 const carCalculatiionForm = document.querySelector(".form");
-const selectedCab = document.getElementById("cab");
-const selectedFuel = document.getElementById("fuel");
-const selectedGearbox = document.getElementById("gearbox");
-const radioButton = document.querySelector(".button-label span");
 const carBrand = document.getElementById("brand");
+const carModel = document.getElementById("model");
+const fart = document.getElementById("fart");
 
 showDropDown();
+carCalculatiionForm.addEventListener("submit", handleShowPrice);
+
+let markaIdValue;
+
+carModel.addEventListener("focus", () => {
+  if (carBrand.value.length === 0) {
+    iziToast.error({
+      position: "topRight",
+      title: "Помилка",
+      message: `Спочатку введіть марку!`,
+    });
+  }
+});
 
 carBrand.addEventListener("change", async () => {
   try {
     console.log(carBrand.value);
+
     const response = await fetch(
       `http://localhost:3000/dai-meni-brand/${carBrand.value}`,
       {
         method: "GET",
       }
     );
-    console.log(response);
     const data = await response.json();
-    console.log(data);
+
     if (data.code !== 200) {
       iziToast.error({
         position: "topRight",
         title: "Помилка",
-        message: `Невірна марка`,
+        message: `Некоректна назва авто`,
       });
+      carModel.setAttribute("readonly", "");
+      return;
+    }
+    markaIdValue = data.markaValue;
+    console.log(markaIdValue);
+
+    if (markaIdValue) {
+      carModel.removeAttribute("readonly");
     }
   } catch (error) {
-    if (carBrand.value.length > 0) {
-      console.log(error);
+    console.log(error);
+  }
+});
+
+carModel.addEventListener("change", async () => {
+  try {
+    console.log(carModel.value);
+    const response = await fetch(
+      `http://localhost:3000/dai-meni-model/${markaIdValue}/${carModel.value}`,
+      {
+        method: "GET",
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+
+    if (data.code !== 200) {
+      iziToast.error({
+        position: "topRight",
+        title: "Помилка",
+        message: `Невірна модель`,
+      });
+      return;
     }
+  } catch (error) {
+    console.log(error);
   }
 });
 
 console.log("Modal window is opening...");
 openModalWindow();
 
-carCalculatiionForm.addEventListener("submit", handleShowPrice);
+// window.addEventListener("click", () => {
+//   fart.playbackRate = 2;
+//   fart.play();
+// });
 
-radioButton.addEventListener("click", () => {
-  console.log(radioButton.textContent);
-});
+// const autoData = {
+//   inputMark: "Audi",
+//   inputModel: "A4",
+//   inputYear: 2016,
+// };
 
-function handleShowPrice(event) {
-  event.preventDefault();
-  if (
-    selectedCab.value === "" ||
-    selectedFuel.value === "" ||
-    selectedGearbox.value === ""
-  ) {
-    alert("Будь ласка, заповніть всі поля");
-    return;
-  }
-  getSomething();
-}
-
-const autoData = {
-  inputMark: "Audi",
-  inputModel: "A4",
-  inputYear: 2016,
-};
-
-let markValue;
-let modelValue;
+// let markValue;
+// let modelValue;
 
 // async function getSomething() {
 //   try {

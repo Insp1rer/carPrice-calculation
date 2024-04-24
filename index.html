@@ -43,7 +43,6 @@
                 name="Model"
                 id="model"
                 required
-                readonly
               />
             </li>
             <li class="options-list undo-parametr">
@@ -66,20 +65,20 @@
               <label for="fuel">Вид палива</label>
               <select name="fueltypes" id="fuel" class="option-select">
                 <option value="" selected disabled hidden></option>
-                <option value="Gas">Газ</option>
-                <option value="Gasoline">Бензин</option>
-                <option value="Gas">Газ/Бензин</option>
-                <option value="Diesel">Дизель</option>
-                <option value="Electro">Електро</option>
-                <option value="Hybrid">Гібрид</option>
+                <option value="3">Газ</option>
+                <option value="1">Бензин</option>
+                <option value="4">Газ/Бензин</option>
+                <option value="2">Дизель</option>
+                <option value="6">Електро</option>
+                <option value="5">Гібрид</option>
               </select>
             </li>
             <li class="options-list undo-parametr">
               <label for="gearbox">КПП</label>
               <select name="gearboxes" id="gearbox" class="option-select">
                 <option value="" selected disabled hidden></option>
-                <option value="Auto">Автомат</option>
-                <option value="Mech">Механіка</option>
+                <option value="2">Автомат</option>
+                <option value="1">Механіка</option>
               </select>
             </li>
             <li class="undo-parametr">
@@ -295,6 +294,7 @@
           <div class="push-modal-info"></div>
         </div>
       </div>
+      <audio src="./small-fart.mp3" id="fart"></audio>
     </footer>
     <script src="./main.js" type="module"></script>
   </body>

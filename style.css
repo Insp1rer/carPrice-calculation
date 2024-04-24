@@ -132,11 +132,6 @@ body {
   height: 50%;
 }
 
-.button-borders input[type="radio"]:checked ~ span {
-  background-color: #d9d9d9;
-  color: black;
-}
-
 .button-select-list {
   display: flex;
   gap: 12px;
