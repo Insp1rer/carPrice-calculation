@@ -106,12 +106,22 @@ modalButtonAvg.addEventListener("click", async () => {
     headers: {
       "Content-Type": "application/json;charset=utf-8",
     },
-    body: JSON.stringify({ brandId: markaIdValue, modelId: modelIdValue }),
+    body: JSON.stringify({
+      brandId: markaIdValue,
+      modelId: modelIdValue,
+      year: carYear.value,
+      gear: carGearbox.value,
+      fuel: carFuel.value,
+      mileage: carMileage.value,
+    }),
   });
+
   const data = await response.json();
   console.log(data);
 
   averagePrice = data.average_price;
+
+  console.log(averagePrice);
 
   const checkList = document.querySelector(".push-modal-info");
 
