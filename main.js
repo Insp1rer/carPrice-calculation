@@ -3,16 +3,33 @@ import "izitoast/dist/css/iziToast.min.css";
 import { openModalWindow } from "./modules/modalWindow";
 import { showDropDown } from "./modules/dropdown";
 import { handleShowPrice } from "./modules/formSubmitCheck";
+import {
+  carBrand,
+  carModel,
+  carYear,
+  carMileage,
+  carFuel,
+  carGearbox,
+  carOwners,
+  carAccidents,
+  engineButtons,
+  cabButtons,
+  interiorButtons,
+  suspensionButtons,
+} from "./modules/modalWindow";
+
+// const carBrand = document.getElementById("brand");
+// const carModel = document.getElementById("model");
+const modalButtonAvg = document.getElementById("myBtn");
 
 const carCalculatiionForm = document.querySelector(".form");
-const carBrand = document.getElementById("brand");
-const carModel = document.getElementById("model");
-const fart = document.getElementById("fart");
-
 showDropDown();
+
 carCalculatiionForm.addEventListener("submit", handleShowPrice);
 
 let markaIdValue;
+let modelIdValue;
+let averagePrice;
 
 carModel.addEventListener("focus", () => {
   if (carBrand.value.length === 0) {
@@ -45,7 +62,7 @@ carBrand.addEventListener("change", async () => {
       carModel.setAttribute("readonly", "");
       return;
     }
-    markaIdValue = data.markaValue;
+    markaIdValue = data.brandId;
     console.log(markaIdValue);
 
     if (markaIdValue) {
@@ -66,7 +83,6 @@ carModel.addEventListener("change", async () => {
       }
     );
     const data = await response.json();
-    console.log(data);
 
     if (data.code !== 200) {
       iziToast.error({
@@ -76,13 +92,45 @@ carModel.addEventListener("change", async () => {
       });
       return;
     }
+
+    modelIdValue = data.modelId;
+    console.log(modelIdValue);
   } catch (error) {
     console.log(error);
   }
 });
 
-console.log("Modal window is opening...");
-openModalWindow();
+modalButtonAvg.addEventListener("click", async () => {
+  const response = await fetch(`http://localhost:3000/dai-meni-average-price`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify({ brandId: markaIdValue, modelId: modelIdValue }),
+  });
+  const data = await response.json();
+  console.log(data);
+
+  averagePrice = data.average_price;
+
+  const checkList = document.querySelector(".push-modal-info");
+
+  checkList.insertAdjacentHTML(
+    "beforeend",
+    `<div>
+    <p class="overall-check-price">Остаточна вартість - ${averagePrice.toFixed(
+      2
+    )} $</p>
+  </div>`
+  );
+
+  console.log(averagePrice);
+});
+
+// export let avgPriceExp = averagePrice;
+
+// openModalWindow();
+// openModalWindow();
 
 // window.addEventListener("click", () => {
 //   fart.playbackRate = 2;

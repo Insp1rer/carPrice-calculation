@@ -1,10 +1,11 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
+import { openModalWindow } from "./modalWindow";
 
 export function handleShowPrice(event) {
   const selectedYear = document.getElementById("manufacture-year");
-  const selectedFuel = document.getElementById("fuel");
   const selectedGearbox = document.getElementById("gearbox");
+  const selectedFuel = document.getElementById("fuel");
   const radioButton1 = document.getElementById("button1");
   const radioButton2 = document.getElementById("button2");
   const radioButton3 = document.getElementById("button3");
@@ -36,10 +37,11 @@ export function handleShowPrice(event) {
       message: `Оберіть всі можливі параметри!`,
     });
   } else {
+    openModalWindow();
     iziToast.success({
       position: "topRight",
       title: "Maxim:",
-      message: `Все нормас, я підарас`,
+      message: `Все нормас`,
     });
   }
 }

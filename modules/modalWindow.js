@@ -1,65 +1,66 @@
+export const carBrand = document.getElementById("brand");
+export const carModel = document.getElementById("model");
+export const carYear = document.getElementById("manufacture-year");
+export const carMileage = document.getElementById("mileage");
+export const carFuel = document.getElementById("fuel");
+export const carGearbox = document.getElementById("gearbox");
+export const carOwners = document.getElementById("owner");
+export const carAccidents = document.getElementById("accident");
+export const modalButton = document.getElementById("myBtn");
+
+export const engineButtons = document.querySelectorAll(
+  'input[name="buttonGroupEngine"]'
+);
+export const cabButtons = document.querySelectorAll(
+  'input[name="buttonGroupCab"]'
+);
+export const interiorButtons = document.querySelectorAll(
+  'input[name="buttonGroupInterior"]'
+);
+export const suspensionButtons = document.querySelectorAll(
+  'input[name="buttonGroupSuspension"]'
+);
+
 export function openModalWindow() {
   const modal = document.getElementById("myModal");
-  const modalButton = document.getElementById("myBtn");
   const spanExit = document.querySelector(".closeBtn");
   const checkList = document.querySelector(".push-modal-info");
-  const fart = document.getElementById("fart");
-  const carBrand = document.getElementById("brand");
-  const carModel = document.getElementById("model");
-  const carYear = document.getElementById("manufacture-year");
-  const carMileage = document.getElementById("mileage");
-  const carFuel = document.getElementById("fuel");
-  const carGearbox = document.getElementById("gearbox");
-  const carOwners = document.getElementById("owner");
-  const carAccidents = document.getElementById("accident");
-  const engineButtons = document.querySelectorAll(
-    'input[name="buttonGroupEngine"]'
-  );
-  const cabButtons = document.querySelectorAll('input[name="buttonGroupCab"]');
-  const interiorButtons = document.querySelectorAll(
-    'input[name="buttonGroupInterior"]'
-  );
-  const suspensionButtons = document.querySelectorAll(
-    'input[name="buttonGroupCab"]'
-  );
 
   let selectedButtonEngine;
   let selectedButtonCab;
   let selectedButtonInterior;
   let selectedButtonSuspension;
 
-  modalButton.addEventListener("click", () => {
-    fart.playbackRate = 2;
-    fart.play();
+  console.log("Modal window is opening...");
 
-    engineButtons.forEach((engineButtons) => {
-      if (engineButtons.checked) {
-        selectedButtonEngine = engineButtons.nextElementSibling.textContent;
-      }
-    });
+  engineButtons.forEach((engineButtons) => {
+    if (engineButtons.checked) {
+      selectedButtonEngine = engineButtons.nextElementSibling.textContent;
+    }
+  });
 
-    cabButtons.forEach((cabButtons) => {
-      if (cabButtons.checked) {
-        selectedButtonCab = cabButtons.nextElementSibling.textContent;
-      }
-    });
+  cabButtons.forEach((cabButtons) => {
+    if (cabButtons.checked) {
+      selectedButtonCab = cabButtons.nextElementSibling.textContent;
+    }
+  });
 
-    interiorButtons.forEach((interiorButtons) => {
-      if (interiorButtons.checked) {
-        selectedButtonInterior = interiorButtons.nextElementSibling.textContent;
-      }
-    });
+  interiorButtons.forEach((interiorButtons) => {
+    if (interiorButtons.checked) {
+      selectedButtonInterior = interiorButtons.nextElementSibling.textContent;
+    }
+  });
 
-    suspensionButtons.forEach((suspensionButtons) => {
-      if (suspensionButtons.checked) {
-        selectedButtonSuspension =
-          suspensionButtons.nextElementSibling.textContent;
-      }
-    });
+  suspensionButtons.forEach((suspensionButtons) => {
+    if (suspensionButtons.checked) {
+      selectedButtonSuspension =
+        suspensionButtons.nextElementSibling.textContent;
+    }
+  });
 
-    console.log("Modal window has opened");
-    modal.style.display = "block";
-    checkList.innerHTML = ` <div class="parametrs-check">
+  modal.style.display = "block";
+
+  checkList.innerHTML = ` <div class="parametrs-check">
               <ul class="price-check">
                 <li>Марка авто</li>
                 <li>Модель авто</li>
@@ -89,10 +90,9 @@ export function openModalWindow() {
                 <li>${selectedButtonSuspension}</li>
               </ul>
             </div>
-            <div>
-              <p class="overall-check-price">Остаточна вартість -</p>
-            </div> `;
-  });
+            `;
+
+  console.log("Modal window has opened");
 
   spanExit.addEventListener("click", () => {
     modal.style.display = "none";
