@@ -100,7 +100,39 @@ carModel.addEventListener("change", async () => {
   }
 });
 
+let selectedButtonEngine;
+let selectedButtonCab;
+let selectedButtonInterior;
+let selectedButtonSuspension;
+
 modalButtonAvg.addEventListener("click", async () => {
+  console.log("Modal window is opening...");
+
+  engineButtons.forEach((engineButtons) => {
+    if (engineButtons.checked) {
+      selectedButtonEngine = engineButtons.nextElementSibling.textContent;
+    }
+  });
+
+  cabButtons.forEach((cabButtons) => {
+    if (cabButtons.checked) {
+      selectedButtonCab = cabButtons.nextElementSibling.textContent;
+    }
+  });
+
+  interiorButtons.forEach((interiorButtons) => {
+    if (interiorButtons.checked) {
+      selectedButtonInterior = interiorButtons.nextElementSibling.textContent;
+    }
+  });
+
+  suspensionButtons.forEach((suspensionButtons) => {
+    if (suspensionButtons.checked) {
+      selectedButtonSuspension =
+        suspensionButtons.nextElementSibling.textContent;
+    }
+  });
+
   const response = await fetch(`http://localhost:3000/dai-meni-average-price`, {
     method: "POST",
     headers: {
@@ -113,6 +145,12 @@ modalButtonAvg.addEventListener("click", async () => {
       gear: carGearbox.value,
       fuel: carFuel.value,
       mileage: carMileage.value,
+      owners: carOwners.value,
+      roadAccidents: carAccidents.value,
+      engineState: selectedButtonEngine,
+      carBodyState: selectedButtonCab,
+      interiorStateDiscount: selectedButtonInterior,
+      suspensionStateDiscount: selectedButtonSuspension,
     }),
   });
 

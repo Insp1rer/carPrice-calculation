@@ -6,6 +6,7 @@
 
 body {
   background-image: url("./images/background.jpg");
+  /* background-size: cover; */
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 19px;
@@ -96,11 +97,6 @@ body {
   color: black;
 }
 
-.button-select-list {
-  display: flex;
-  gap: 12px;
-}
-
 .button-borders .button-label {
   cursor: pointer;
 }
@@ -110,17 +106,40 @@ body {
 }
 
 .button-borders .button-label span {
+  width: 168px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 16px;
   position: relative;
-  display: inline-block;
   user-select: none;
-  transition: 0.1s;
   padding: 8px 12px;
   border-radius: 14px;
   border: 1px solid #d9d9d9;
-  transition: 0.2s;
+  transition: 0.3s;
   user-select: none;
   overflow: hidden;
+}
+
+.button-borders:nth-child(3n):hover,
+.button-borders:nth-child(3n):focus {
+  border-radius: 14px;
+  background-color: rgba(238, 90, 90, 0.8);
+  color: black;
+}
+
+.button-borders:nth-child(3n-1):hover,
+.button-borders:nth-child(3n-1):focus {
+  border-radius: 14px;
+  background-color: rgba(238, 223, 90, 0.8);
+  color: black;
+}
+
+.button-borders:nth-child(3n-2):hover,
+.button-borders:nth-child(3n-2):focus {
+  border-radius: 14px;
+  background-color: rgba(85, 223, 103, 0.8);
+  color: black;
 }
 
 .button-borders .button-label span::before {
@@ -134,7 +153,7 @@ body {
 
 .button-select-list {
   display: flex;
-  gap: 12px;
+  gap: 15px;
 }
 
 .button-borders input[type="radio"]:checked ~ span {
@@ -155,6 +174,12 @@ body {
   font-size: 28px;
   font-weight: bold;
   font-family: "Montserrat", sans-serif;
+}
+
+.price-calculation-btn:hover,
+.price-calculation-btn:focus {
+  background-image: url(./images/black-guy-staring.gif);
+  background-size: 700px 100px;
 }
 
 .main {
