@@ -149,8 +149,8 @@ modalButtonAvg.addEventListener("click", async () => {
       roadAccidents: carAccidents.value,
       engineState: selectedButtonEngine,
       carBodyState: selectedButtonCab,
-      interiorStateDiscount: selectedButtonInterior,
-      suspensionStateDiscount: selectedButtonSuspension,
+      interiorState: selectedButtonInterior,
+      suspensionState: selectedButtonSuspension,
     }),
   });
 
