@@ -1,6 +1,6 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
-import { openModalWindow } from "./modules/modalWindow";
+import { setupFieldsCheck } from "./modules/fieldsCheck";
 import { showDropDown } from "./modules/dropdown";
 import { handleShowPrice } from "./modules/formSubmitCheck";
 import {
@@ -18,18 +18,21 @@ import {
   suspensionButtons,
 } from "./modules/modalWindow";
 
-// const carBrand = document.getElementById("brand");
-// const carModel = document.getElementById("model");
 const modalButtonAvg = document.getElementById("myBtn");
-
 const carCalculatiionForm = document.querySelector(".form");
+
 showDropDown();
+setupFieldsCheck();
 
 carCalculatiionForm.addEventListener("submit", handleShowPrice);
 
 let markaIdValue;
 let modelIdValue;
 let averagePrice;
+let selectedButtonEngine;
+let selectedButtonCab;
+let selectedButtonInterior;
+let selectedButtonSuspension;
 
 carModel.addEventListener("focus", () => {
   if (carBrand.value.length === 0) {
@@ -99,11 +102,6 @@ carModel.addEventListener("change", async () => {
     console.log(error);
   }
 });
-
-let selectedButtonEngine;
-let selectedButtonCab;
-let selectedButtonInterior;
-let selectedButtonSuspension;
 
 modalButtonAvg.addEventListener("click", async () => {
   console.log("Modal window is opening...");
@@ -175,6 +173,9 @@ modalButtonAvg.addEventListener("click", async () => {
   console.log(averagePrice);
 });
 
+let userInput = "Passat CC";
+let result = userInput.replace(/ /g, "-").toLowerCase();
+console.log(result);
 // export let avgPriceExp = averagePrice;
 
 // openModalWindow();

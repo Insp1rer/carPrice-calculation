@@ -6,7 +6,7 @@
 
 body {
   background-image: url("./images/background.jpg");
-  /* background-size: cover; */
+  background-size: cover;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 19px;
@@ -179,7 +179,7 @@ body {
 .price-calculation-btn:hover,
 .price-calculation-btn:focus {
   background-image: url(./images/black-guy-staring.gif);
-  background-size: 700px 100px;
+  /* background-size: 700px 100px; */
 }
 
 .main {
