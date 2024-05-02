@@ -1,12 +1,12 @@
-export const carBrand = document.getElementById("brand");
-export const carModel = document.getElementById("model");
-export const carYear = document.getElementById("manufacture-year");
-export const carMileage = document.getElementById("mileage");
-export const carFuel = document.getElementById("fuel");
-export const carGearbox = document.getElementById("gearbox");
-export const carOwners = document.getElementById("owner");
-export const carAccidents = document.getElementById("accident");
-export const modalButton = document.getElementById("myBtn");
+export const carBrand = document.getElementById('brand');
+export const carModel = document.getElementById('model');
+export const carYear = document.getElementById('manufacture-year');
+export const carMileage = document.getElementById('mileage');
+export const carFuel = document.getElementById('fuel');
+export const carGearbox = document.getElementById('gearbox');
+export const carOwners = document.getElementById('owner');
+export const carAccidents = document.getElementById('accident');
+export const modalButton = document.getElementById('myBtn');
 
 export const engineButtons = document.querySelectorAll(
   'input[name="buttonGroupEngine"]'
@@ -22,46 +22,46 @@ export const suspensionButtons = document.querySelectorAll(
 );
 
 export function openModalWindow() {
-  const modal = document.getElementById("myModal");
-  const spanExit = document.querySelector(".closeBtn");
-  const checkList = document.querySelector(".push-modal-info");
+  const modal = document.getElementById('myModal');
+  const spanExit = document.querySelector('.closeBtn');
+  const checkList = document.querySelector('.push-modal-info');
 
   let selectedButtonEngine;
   let selectedButtonCab;
   let selectedButtonInterior;
   let selectedButtonSuspension;
 
-  console.log("Modal window is opening...");
+  console.log('Modal window is opening...');
 
-  engineButtons.forEach((engineButtons) => {
+  engineButtons.forEach(engineButtons => {
     if (engineButtons.checked) {
       selectedButtonEngine = engineButtons.nextElementSibling.textContent;
     }
   });
 
-  cabButtons.forEach((cabButtons) => {
+  cabButtons.forEach(cabButtons => {
     if (cabButtons.checked) {
       selectedButtonCab = cabButtons.nextElementSibling.textContent;
     }
   });
 
-  interiorButtons.forEach((interiorButtons) => {
+  interiorButtons.forEach(interiorButtons => {
     if (interiorButtons.checked) {
       selectedButtonInterior = interiorButtons.nextElementSibling.textContent;
     }
   });
 
-  suspensionButtons.forEach((suspensionButtons) => {
+  suspensionButtons.forEach(suspensionButtons => {
     if (suspensionButtons.checked) {
       selectedButtonSuspension =
         suspensionButtons.nextElementSibling.textContent;
     }
   });
 
-  modal.style.display = "block";
+  modal.style.display = 'block';
 
   checkList.innerHTML = ` <div class="parametrs-check">
-              <ul class="price-check">
+              <ul class="price-check price-check-leftside">
                 <li>Марка авто</li>
                 <li>Модель авто</li>
                 <li>Рік випуску</li>
@@ -76,8 +76,8 @@ export function openModalWindow() {
                 <li>Стан підвіски</li>
               </ul>
               <ul class="price-check">
-                <li>${carBrand.value}</li>
-                <li>${carModel.value}</li>
+                <li>${carBrand.value.toUpperCase()}</li>
+                <li>${carModel.selectedOptions[0].label.toUpperCase()}</li>
                 <li>${carYear.value}</li>
                 <li>${carMileage.value} тис. км</li>
                 <li>${carFuel.selectedOptions[0].label}</li>
@@ -92,15 +92,15 @@ export function openModalWindow() {
             </div>
             `;
 
-  console.log("Modal window has opened");
+  console.log('Modal window has opened');
 
-  spanExit.addEventListener("click", () => {
-    modal.style.display = "none";
+  spanExit.addEventListener('click', () => {
+    modal.style.display = 'none';
   });
 
-  window.addEventListener("click", (event) => {
+  window.addEventListener('click', event => {
     if (event.target == modal) {
-      modal.style.display = "none";
+      modal.style.display = 'none';
     }
   });
 }

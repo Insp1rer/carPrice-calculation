@@ -5,9 +5,9 @@
 }
 
 body {
-  background-image: url("./images/background.jpg");
+  background-image: url('./images/background.jpg');
   background-size: cover;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 19px;
   color: #c8d0d4;
@@ -36,7 +36,7 @@ body {
   padding-left: 10px;
   box-sizing: border-box;
   border-radius: 14px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 16px;
   border: 1px solid white;
@@ -49,7 +49,7 @@ body {
   padding-right: 10px;
   box-sizing: border-box;
   border-radius: 14px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 16px;
   border: 1px solid white;
@@ -65,7 +65,7 @@ body {
   cursor: pointer;
 }
 
-.button-borders .button-label input[type="radio"] {
+.button-borders .button-label input[type='radio'] {
   display: none;
 }
 
@@ -84,7 +84,7 @@ body {
 }
 
 .button-borders .button-label span::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -92,7 +92,7 @@ body {
   height: 50%;
 }
 
-.button-borders input[type="radio"]:checked ~ span {
+.button-borders input[type='radio']:checked ~ span {
   background-color: #d9d9d9;
   color: black;
 }
@@ -101,7 +101,7 @@ body {
   cursor: pointer;
 }
 
-.button-borders .button-label input[type="radio"] {
+.button-borders .button-label input[type='radio'] {
   display: none;
 }
 
@@ -143,7 +143,7 @@ body {
 }
 
 .button-borders .button-label span::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -156,7 +156,7 @@ body {
   gap: 15px;
 }
 
-.button-borders input[type="radio"]:checked ~ span {
+.button-borders input[type='radio']:checked ~ span {
   background-color: #d9d9d9;
   color: black;
 }
@@ -173,13 +173,13 @@ body {
   background-size: 300px 100px;
   font-size: 28px;
   font-weight: bold;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .price-calculation-btn:hover,
 .price-calculation-btn:focus {
-  background-image: url(./images/black-guy-staring.gif);
-  /* background-size: 700px 100px; */
+  /* background: url(./images/yana.mp4); */
+  background-size: 700px 100px;
 }
 
 .main {
@@ -258,6 +258,10 @@ body {
   padding: 0;
   font-size: 19px;
   font-weight: 400;
+}
+
+.price-check-leftside {
+  font-weight: 600;
 }
 
 .parametrs-check {

@@ -37,18 +37,33 @@
             </li>
             <li class="undo-parametr">
               <label for="model">Модель авто</label>
-              <input
+              <!-- <input
                 class="input-field-text"
                 type="text"
                 name="Model"
                 id="model"
                 required
                 readonly
-              />
+              /> -->
+              <select
+                name="Model"
+                id="model"
+                class="input-field-text"
+                required
+                readonly
+              >
+                <option value="" selected disabled hidden></option>
+              </select>
             </li>
             <li class="options-list undo-parametr">
               <label for="Yaer">Рік випуску</label>
-              <select name="year" id="manufacture-year" class="option-select">
+              <select
+                name="year"
+                id="manufacture-year"
+                class="option-select"
+                required
+                readonly
+              >
                 <option value="" selected disabled hidden></option>
               </select>
             </li>
@@ -81,8 +96,11 @@
               <label for="gearbox">КПП</label>
               <select name="gearboxes" id="gearbox" class="option-select">
                 <option value="" selected disabled hidden></option>
-                <option value="2">Автомат</option>
                 <option value="1">Механіка</option>
+                <option value="2">Автомат</option>
+                <option value="3">Типтронік</option>
+                <option value="4">Робот</option>
+                <option value="5">Варіатор</option>
               </select>
             </li>
             <li class="undo-parametr">
