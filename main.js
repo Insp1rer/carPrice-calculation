@@ -34,16 +34,6 @@ let selectedButtonCab;
 let selectedButtonInterior;
 let selectedButtonSuspension;
 
-carModel.addEventListener('focus', () => {
-  if (carBrand.value.length === 0) {
-    iziToast.error({
-      position: 'topRight',
-      title: 'Помилка',
-      message: `Спочатку введіть марку!`,
-    });
-  }
-});
-
 carBrand.addEventListener('change', async () => {
   try {
     console.log(carBrand.value);
@@ -79,48 +69,56 @@ carBrand.addEventListener('change', async () => {
 carBrand.addEventListener('input', () => {
   hasModels = false;
   carModel.innerHTML = '';
-  carModel.setAttribute('readonly', '');
+  carModel.readonly = true;
   markaIdValue = null;
 });
 
 //! LOL XD мінон сасікскіііііі макс кізячкоу наївся по приколу імхо бтв крінж хайп флекс дрілл чілл
 
-carModel.addEventListener('click', async () => {
-  try {
-    console.log(carModel.value);
-    if (!hasModels && markaIdValue) {
-      const response = await fetch(
-        `http://localhost:3000/dai-meni-models/${markaIdValue}`,
-        {
-          method: 'GET',
+carModel.addEventListener('click', async () => { 
+  if (!markaIdValue) {
+    iziToast.error({
+      position: 'topRight',
+      title: 'Помилка',
+      message: `Спочатку вкажіть марку!`,
+    });
+  } else {
+    try {
+      console.log(carModel.value);
+      if (!hasModels && markaIdValue) {
+        const response = await fetch(
+          `http://localhost:3000/dai-meni-models/${markaIdValue}`,
+          {
+            method: 'GET',
+          }
+        );
+        const data = await response.json();
+
+        if (data.code !== 200) {
+          iziToast.error({
+            position: 'topRight',
+            title: 'Помилка',
+            message: `Не було знайдено відповідних моделей`,
+          });
+        } else {
+          hasModels = true;
+          console.log(hasModels);
+
+          const html = [];
+
+          for (let i = 0; i < data.models.length; i++) {
+            let id = data.models[i].id;
+            let name = data.models[i].name;
+            html.push(`<option value="${id}">${name}</option>`);
+          }
+          carModel.innerHTML = html.join('');
+          console.log(carModel.value);
         }
-      );
-      const data = await response.json();
-
-      if (data.code !== 200) {
-        iziToast.error({
-          position: 'topRight',
-          title: 'Помилка',
-          message: `Не було знайдено відповідних моделей`,
-        });
-      } else {
-        hasModels = true;
-        console.log(hasModels);
-
-        const html = [];
-
-        for (let i = 0; i < data.models.length; i++) {
-          let id = data.models[i].id;
-          let name = data.models[i].name;
-          html.push(`<option value="${id}">${name}</option>`);
-        }
-        carModel.innerHTML = html.join('');
-        console.log(carModel.value);
       }
+    } catch (error) {
+      console.log(error);
     }
-  } catch (error) {
-    console.log(error);
-  }
+    }
 });
 
 modalButtonAvg.addEventListener('click', async () => {
