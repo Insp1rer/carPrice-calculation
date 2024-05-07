@@ -75,7 +75,7 @@ carBrand.addEventListener('input', () => {
 
 //! LOL XD мінон сасікскіііііі макс кізячкоу наївся по приколу імхо бтв крінж хайп флекс дрілл чілл
 
-carModel.addEventListener('click', async () => { 
+carModel.addEventListener('click', async () => {
   if (!markaIdValue) {
     iziToast.error({
       position: 'topRight',
@@ -118,12 +118,10 @@ carModel.addEventListener('click', async () => {
     } catch (error) {
       console.log(error);
     }
-    }
+  }
 });
 
 modalButtonAvg.addEventListener('click', async () => {
-  console.log('Modal window is opening...');
-
   engineButtons.forEach(engineButtons => {
     if (engineButtons.checked) {
       selectedButtonEngine = engineButtons.nextElementSibling.textContent;
@@ -148,53 +146,72 @@ modalButtonAvg.addEventListener('click', async () => {
         suspensionButtons.nextElementSibling.textContent;
     }
   });
+  if (
+    markaIdValue &&
+    carModel.value &&
+    carYear.value &&
+    carAccidents.value &&
+    carMileage &&
+    carFuel.value &&
+    carGearbox.value &&
+    carOwners.value &&
+    selectedButtonCab &&
+    selectedButtonEngine &&
+    selectedButtonInterior &&
+    selectedButtonSuspension
+  ) {
+    console.log('Modal window is opening...');
 
-  const response = await fetch(`http://localhost:3000/dai-meni-average-price`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json;charset=utf-8',
-    },
-    body: JSON.stringify({
-      brandId: markaIdValue,
-      modelId: carModel.value,
-      year: carYear.value,
-      gear: carGearbox.value,
-      fuel: carFuel.value,
-      mileage: carMileage.value,
-      owners: carOwners.value,
-      roadAccidents: carAccidents.value,
-      engineState: selectedButtonEngine,
-      carBodyState: selectedButtonCab,
-      interiorState: selectedButtonInterior,
-      suspensionState: selectedButtonSuspension,
-    }),
-  });
+    const response = await fetch(
+      `http://localhost:3000/dai-meni-average-price`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify({
+          brandId: markaIdValue,
+          modelId: carModel.value,
+          year: carYear.value,
+          gear: carGearbox.value,
+          fuel: carFuel.value,
+          mileage: carMileage.value,
+          owners: carOwners.value,
+          roadAccidents: carAccidents.value,
+          engineState: selectedButtonEngine,
+          carBodyState: selectedButtonCab,
+          interiorState: selectedButtonInterior,
+          suspensionState: selectedButtonSuspension,
+        }),
+      }
+    );
 
-  const data = await response.json();
-  console.log(data);
+    const data = await response.json();
+    console.log(data);
 
-  averagePrice = data.average_price;
+    averagePrice = data.average_price;
 
-  console.log(averagePrice);
+    console.log(averagePrice);
 
-  const checkList = document.querySelector('.push-modal-info');
+    const checkList = document.querySelector('.push-modal-info');
 
-  if (averagePrice > 0) {
-    checkList.insertAdjacentHTML(
-      'beforeend',
-      `<div>
+    if (averagePrice > 0) {
+      checkList.insertAdjacentHTML(
+        'beforeend',
+        `<div>
     <p class="overall-check-price">Остаточна вартість - ${averagePrice.toFixed(
       2
     )} $</p>
   </div>`
-    );
-  } else {
-    checkList.insertAdjacentHTML(
-      'beforeend',
-      `<div>
+      );
+    } else {
+      checkList.insertAdjacentHTML(
+        'beforeend',
+        `<div>
     <p class="overall-check-price">Не вдалося розрахувати вартість авто</p>
   </div>`
-    );
+      );
+    }
   }
 
   console.log(averagePrice);
