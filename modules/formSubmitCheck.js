@@ -1,11 +1,18 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 import { openModalWindow } from "./modalWindow";
+import {
+  carBrand,
+  carModel,
+  carYear,
+  carMileage,
+  carFuel,
+  carGearbox,
+  carOwners,
+  carAccidents,
+} from './modalWindow';
 
 export function handleShowPrice(event) {
-  const selectedYear = document.getElementById("manufacture-year");
-  const selectedGearbox = document.getElementById("gearbox");
-  const selectedFuel = document.getElementById("fuel");
   const radioButton1 = document.getElementById("button1");
   const radioButton2 = document.getElementById("button2");
   const radioButton3 = document.getElementById("button3");
@@ -21,9 +28,14 @@ export function handleShowPrice(event) {
 
   event.preventDefault();
   if (
-    selectedYear.value === "" ||
-    selectedFuel.value === "" ||
-    selectedGearbox.value === "" ||
+    carBrand.value.trim() === "" ||
+    carModel.value === "" ||
+    carYear.value === "" ||
+    carMileage.value === "" ||
+    carFuel.value === "" ||
+    carGearbox.value === "" ||
+    carAccidents.value === "" ||
+    carOwners.value === "" ||
     !(
       (radioButton1.checked || radioButton2.checked || radioButton3.checked) &&
       (radioButton4.checked || radioButton5.checked || radioButton6.checked) &&
