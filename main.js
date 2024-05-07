@@ -201,7 +201,7 @@ modalButtonAvg.addEventListener('click', async () => {
     //! logging
     console.log(`Average price response: ${data}`);
 
-    averagePrice = data.average_price;
+    averagePrice = data.averagePrice;
 
     const checkList = document.querySelector('.push-modal-info');
 
