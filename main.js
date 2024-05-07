@@ -37,19 +37,16 @@ let selectedButtonSuspension;
 carBrand.addEventListener('change', async () => {
   try {
     //! logging
-    console.log(carBrand.value);
+    console.log('carBrand: ', carBrand.value);
 
     const url = `http://localhost:3000/dai-meni-brandId/${carBrand.value}`;
 
     //! logging
-    console.log(`Constructed URL: ${url}`); 
+    console.log(`Constructed URL: ${url}`);
 
-    const response = await fetch(
-      url,
-      {
-        method: 'GET',
-      }
-    );
+    const response = await fetch(url, {
+      method: 'GET',
+    });
     const data = await response.json();
 
     if (data.code !== 200) {
@@ -111,7 +108,7 @@ carModel.addEventListener('click', async () => {
           });
         } else {
           hasModels = true;
-          
+
           const html = [];
           for (let i = 0; i < data.models.length; i++) {
             let id = data.models[i].id;
@@ -120,7 +117,7 @@ carModel.addEventListener('click', async () => {
           }
           carModel.innerHTML = html.join('');
 
-           //! loggging
+          //! loggging
           console.log(`List of models was downloaded`);
         }
       }
@@ -197,7 +194,7 @@ modalButtonAvg.addEventListener('click', async () => {
     );
 
     const data = await response.json();
-    
+
     //! logging
     console.log(`Average price response: ${data}`);
 
@@ -206,9 +203,9 @@ modalButtonAvg.addEventListener('click', async () => {
     const checkList = document.querySelector('.push-modal-info');
 
     if (averagePrice > 0) {
-      //! logging 
-      console.log(`Average price was fetched: ${console.log(averagePrice)}`);
-      
+      //! logging
+      console.log('Average price was fetched: ', averagePrice);
+
       checkList.insertAdjacentHTML(
         'beforeend',
         `<div>
@@ -220,7 +217,7 @@ modalButtonAvg.addEventListener('click', async () => {
     } else {
       //! logging
       console.log('Average price wasn`t fetched');
-    
+
       checkList.insertAdjacentHTML(
         'beforeend',
         `<div>
@@ -229,7 +226,6 @@ modalButtonAvg.addEventListener('click', async () => {
       );
     }
   }
-
 });
 
 // export let avgPriceExp = averagePrice;
