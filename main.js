@@ -36,10 +36,16 @@ let selectedButtonSuspension;
 
 carBrand.addEventListener('change', async () => {
   try {
+    //! logging
     console.log(carBrand.value);
 
+    const url = `http://localhost:3000/dai-meni-brandId/${carBrand.value}`;
+
+    //! logging
+    console.log(`Constructed URL: ${url}`); 
+
     const response = await fetch(
-      `http://localhost:3000/dai-meni-brand/${carBrand.value}`,
+      url,
       {
         method: 'GET',
       }
@@ -56,7 +62,9 @@ carBrand.addEventListener('change', async () => {
       return;
     }
     markaIdValue = data.brandId;
-    console.log(markaIdValue);
+
+    //! logging
+    console.log(`Brand id: ${markaIdValue}`);
 
     if (markaIdValue) {
       carModel.removeAttribute('readonly');
@@ -84,6 +92,7 @@ carModel.addEventListener('click', async () => {
     });
   } else {
     try {
+      //! logging
       console.log(carModel.value);
       if (!hasModels && markaIdValue) {
         const response = await fetch(
@@ -102,17 +111,17 @@ carModel.addEventListener('click', async () => {
           });
         } else {
           hasModels = true;
-          console.log(hasModels);
-
+          
           const html = [];
-
           for (let i = 0; i < data.models.length; i++) {
             let id = data.models[i].id;
             let name = data.models[i].name;
             html.push(`<option value="${id}">${name}</option>`);
           }
           carModel.innerHTML = html.join('');
-          console.log(carModel.value);
+
+           //! loggging
+          console.log(`List of models was downloaded`);
         }
       }
     } catch (error) {
@@ -160,7 +169,8 @@ modalButtonAvg.addEventListener('click', async () => {
     selectedButtonInterior &&
     selectedButtonSuspension
   ) {
-    console.log('Modal window is opening...');
+    //! logging
+    console.log('Requesting average price...');
 
     const response = await fetch(
       `http://localhost:3000/dai-meni-average-price`,
@@ -187,15 +197,18 @@ modalButtonAvg.addEventListener('click', async () => {
     );
 
     const data = await response.json();
-    console.log(data);
+    
+    //! logging
+    console.log(`Average price response: ${data}`);
 
     averagePrice = data.average_price;
-
-    console.log(averagePrice);
 
     const checkList = document.querySelector('.push-modal-info');
 
     if (averagePrice > 0) {
+      //! logging 
+      console.log(`Average price was fetched: ${console.log(averagePrice)}`);
+      
       checkList.insertAdjacentHTML(
         'beforeend',
         `<div>
@@ -205,6 +218,9 @@ modalButtonAvg.addEventListener('click', async () => {
   </div>`
       );
     } else {
+      //! logging
+      console.log('Average price wasn`t fetched');
+    
       checkList.insertAdjacentHTML(
         'beforeend',
         `<div>
@@ -214,7 +230,6 @@ modalButtonAvg.addEventListener('click', async () => {
     }
   }
 
-  console.log(averagePrice);
 });
 
 // export let avgPriceExp = averagePrice;
