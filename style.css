@@ -25,8 +25,7 @@ body {
 }
 
 .container {
-  width: 1880px;
-  padding: 20px;
+  padding: 30px;
   margin: 0 auto;
 }
 
@@ -273,6 +272,10 @@ body {
 .overall-check-price {
   font-weight: 600;
   font-size: 24px;
+}
+
+.inc {
+  padding-top: 90px;
 }
 
 @keyframes unfoldIn {
