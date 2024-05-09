@@ -1,6 +1,6 @@
-import iziToast from "izitoast";
-import "izitoast/dist/css/iziToast.min.css";
-import { openModalWindow } from "./modalWindow";
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+import { openModalWindow } from './modalWindow';
 import {
   carBrand,
   carModel,
@@ -13,29 +13,29 @@ import {
 } from './modalWindow';
 
 export function handleShowPrice(event) {
-  const radioButton1 = document.getElementById("button1");
-  const radioButton2 = document.getElementById("button2");
-  const radioButton3 = document.getElementById("button3");
-  const radioButton4 = document.getElementById("button4");
-  const radioButton5 = document.getElementById("button5");
-  const radioButton6 = document.getElementById("button6");
-  const radioButton7 = document.getElementById("button7");
-  const radioButton8 = document.getElementById("button8");
-  const radioButton9 = document.getElementById("button9");
-  const radioButton10 = document.getElementById("button10");
-  const radioButton11 = document.getElementById("button11");
-  const radioButton12 = document.getElementById("button12");
+  const radioButton1 = document.getElementById('button1');
+  const radioButton2 = document.getElementById('button2');
+  const radioButton3 = document.getElementById('button3');
+  const radioButton4 = document.getElementById('button4');
+  const radioButton5 = document.getElementById('button5');
+  const radioButton6 = document.getElementById('button6');
+  const radioButton7 = document.getElementById('button7');
+  const radioButton8 = document.getElementById('button8');
+  const radioButton9 = document.getElementById('button9');
+  const radioButton10 = document.getElementById('button10');
+  const radioButton11 = document.getElementById('button11');
+  const radioButton12 = document.getElementById('button12');
 
   event.preventDefault();
   if (
-    carBrand.value.trim() === "" ||
-    carModel.value === "" ||
-    carYear.value === "" ||
-    carMileage.value === "" ||
-    carFuel.value === "" ||
-    carGearbox.value === "" ||
-    carAccidents.value === "" ||
-    carOwners.value === "" ||
+    carBrand.value.trim() === '' ||
+    carModel.value === '' ||
+    carYear.value === '' ||
+    carMileage.value === '' ||
+    carFuel.value === '' ||
+    carGearbox.value === '' ||
+    carAccidents.value === '' ||
+    carOwners.value === '' ||
     !(
       (radioButton1.checked || radioButton2.checked || radioButton3.checked) &&
       (radioButton4.checked || radioButton5.checked || radioButton6.checked) &&
@@ -44,16 +44,16 @@ export function handleShowPrice(event) {
     )
   ) {
     iziToast.error({
-      position: "topRight",
-      title: "Помилка",
+      position: 'topRight',
+      title: 'Помилка',
       message: `Оберіть всі можливі параметри!`,
     });
   } else {
     openModalWindow();
     iziToast.success({
-      position: "topRight",
-      title: "Maxim:",
-      message: `Все нормас`,
+      position: 'topRight',
+      title: '',
+      message: `Обраховуємо середню ціну...`,
     });
   }
 }
