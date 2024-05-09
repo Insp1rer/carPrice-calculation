@@ -37,7 +37,7 @@ export function setupFieldsCheck() {
     }
   };
   carBrandCheck.onkeydown = event => {
-    if (event.key === '/') {
+    if (event.key === '/' || event.key === '?') {
       return false;
     }
   };
