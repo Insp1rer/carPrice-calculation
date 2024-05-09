@@ -116,7 +116,7 @@ carModel.addEventListener('click', async () => {
             html.push(`<option value="${id}">${name}</option>`);
           }
           carModel.innerHTML = html.join('');
-
+          console.log(carModel.size);
           //! loggging
           console.log(`List of models was downloaded`);
         }
