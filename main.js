@@ -1,9 +1,10 @@
 import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
 import { setupFieldsCheck } from './modules/fieldsCheck';
 import { showDropDown } from './modules/dropdown';
 import { handleShowPrice } from './modules/formSubmitCheck';
 import {
+  modalButtonAvg,
+  carCalculatiionForm,
   carBrand,
   carModel,
   carYear,
@@ -16,10 +17,7 @@ import {
   cabButtons,
   interiorButtons,
   suspensionButtons,
-} from './modules/modalWindow';
-
-const modalButtonAvg = document.getElementById('myBtn');
-const carCalculatiionForm = document.querySelector('.form');
+} from './modules/components.js';
 
 showDropDown();
 setupFieldsCheck();

@@ -1,5 +1,4 @@
 import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
 import { openModalWindow } from './modalWindow';
 import {
   carBrand,
@@ -10,9 +9,12 @@ import {
   carGearbox,
   carOwners,
   carAccidents,
-} from './modalWindow';
+} from './components.js';
 
 export function handleShowPrice(event) {
+  event.preventDefault();
+
+  // yo
   const radioButton1 = document.getElementById('button1');
   const radioButton2 = document.getElementById('button2');
   const radioButton3 = document.getElementById('button3');
@@ -26,7 +28,6 @@ export function handleShowPrice(event) {
   const radioButton11 = document.getElementById('button11');
   const radioButton12 = document.getElementById('button12');
 
-  event.preventDefault();
   if (
     carBrand.value.trim() === '' ||
     carModel.value === '' ||
